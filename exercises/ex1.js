@@ -7,7 +7,21 @@ Create a function named sumLargestNumbers that will receive an array of numbers 
 */
 
 const sumLargestNumbers = function(data) {
-    // Put your solution here
+    var intArray = data;
+    var highest = -Infinity;
+    var secondHighest = -Infinity;
+    var answer = 0;
+    for (var i = 0; i < intArray.length; i++){
+        if (intArray[i] > highest){
+            secondHighest = highest;
+            highest = intArray[i];
+        }
+        else if (intArray[i] === highest || intArray[i]>secondHighest){
+            secondHighest = intArray[i]
+        }
+    }
+    answer = highest + secondHighest;
+    return answer;
 };
   
 console.log(sumLargestNumbers([1, 10])); // 11

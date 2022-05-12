@@ -21,7 +21,10 @@ This one is a doozy! We might want to start by creating a helper function called
 */
 
 const chooseRecipe = function(bakeryA, bakeryB, recipes) {
-  // Code here!
+    return recipes.filter(recipe =>
+        bakeryA.some(bakeryAIngredient => recipe.ingredients.includes(bakeryAIngredient)) &&
+        bakeryB.some(bakeryBIngredient => recipe.ingredients.includes(bakeryBIngredient))
+      )[0].name;
 }
 
 let bakeryA = ['saffron', 'eggs', 'tomato paste', 'coconut', 'custard'];

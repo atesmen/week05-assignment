@@ -8,9 +8,11 @@ Instruction
 Create a function named camelCase that will convert a string to camel case, and return the result.
 */
 
-Input
+
 const camelCase = function(input) {
-  // Your code here
+  return input.replace(/\s+(.)/g, function(match, group){
+    return group.toUpperCase();
+  })
 };
 
 console.log(camelCase("this is a string")); // thisIsAString

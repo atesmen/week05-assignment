@@ -16,7 +16,56 @@ For more information on casing styles, read Wikipedia's Special Case Styles for 
 */
 
 const makeCaze = function(input, caze) {
-  // Put your solution here
+  if (typeof caze !== 'object') caze = [caze];
+
+  if (caze.length > 1) {
+    const sortingArr = ['camel', 'pascal', 'snake', 'kebab', 'title', 'vowel', 'consonant', 'upper', 'lower'];
+    caze.sort((a, b) => sortingArr.indexOf(a) - sortingArr.indexOf(b));
+  }
+
+  for (const style of caze) {
+
+    switch (style) {
+
+    case 'camel':
+      input = input.replace(/\s\w/g, char => char.toUpperCase()).replace(/\s/g, '');
+      break;
+
+    case 'pascal':
+      input = input.replace(/\b\w/g, char => char.toUpperCase()).replace(/\s/g, '');
+      break;
+
+    case 'snake':
+      input = input.replace(/\s/g, '_');
+      break;
+
+    case 'kebab':
+      input = input.replace(/\s/g, '-');
+      break;
+
+    case 'title':
+      input = input.replace(/\b\w/g, char => char.toUpperCase());
+      break;
+
+    case 'vowel':
+      input = input.replace(/[aeiou]/gi, char => char.toUpperCase());
+      break;
+
+    case 'consonant':
+      input = input.replace(/[^aeiou]/gi, char => char.toUpperCase());
+      break;
+
+    case 'upper':
+      input = input.toUpperCase();
+      break;
+
+    case 'lower':
+      input = input.toLowerCase();
+      break;
+    }
+  }
+
+  return input;
 }
 
 console.log(makeCaze("this is a string", "camel")); // thisIsAString

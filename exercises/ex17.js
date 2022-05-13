@@ -22,7 +22,17 @@ Create a function named urlDecode that will receive a URL encoded string, and re
 */
 
 const urlDecode = function(text) {
-  // Put your solution here
+  let output = {};
+
+  text = text.replace(/&/g, '=').replace(/%20/g, ' ');
+  
+  const textArr = text.split('=');
+
+  for (let i = 0; i < textArr.length; i += 2) {
+    output[textArr[i]] = textArr[i + 1];
+  }
+
+  return output;
 };
 
 console.log(urlDecode("duck=rubber")); //{duck: "rubber"}
